@@ -1,0 +1,17 @@
+/* -------------------------------------------------- */
+/* 能力値
+/* -------------------------------------------------- */
+
+/* エリア */
+.area_status {
+  display: flex;
+}
+
+/* 入力欄 */
+.area_status > .input_status {
+  width: 50px;
+  padding: 10px;
+}
+.area_status > .input_status > input {
+  width: 100%;
+}

@@ -4,35 +4,191 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
+	  <script src="script.js"></script>
     <title>りゅうたま ココフォリア用チャットコマンド生成</title>
   </head>
 
   <body>
-    <h1></h1>
 
-    <!-- 能力値 -->
-    <div class="area_status">
-      <div class="input_status">
-        体力
-        <input />
-      </div>
-      <div class="input_status">
-        敏捷
-        <input />
-      </div>
-      <div class="input_status">
-        知力
-        <input />
-      </div>
-      <div class="input_status">
-        精神
-        <input />
-      </div>
+    <div class="flex">
+
+      <!------------------------------------------------------>
+      <!-- ■ 能力値エリア -->
+      <!------------------------------------------------------>
+      <div class="area">
+        <h1>能力値</h1>
+
+        <div class="area_status">
+          <!-- 体力 -->
+          <div id="status_vit" class="input_status">
+            <label>体力</label>
+            <div class="number_input">
+              <button class="button_up">▲</button>
+              <input value="6" disabled />
+              <button class="button_down">▼</button>
+            </div>
+          </div>
+
+          <!-- 敏捷 -->
+          <div id="status_agi" class="input_status">
+            <label>敏捷</label>
+            <div class="number_input">
+              <button class="button_up">▲</button>
+              <input value="6" disabled />
+              <button class="button_down">▼</button>
+            </div>
+          </div>
+
+          <!-- 知力 -->
+          <div id="status_int" class="input_status">
+            <label>知力</label>
+            <div class="number_input">
+              <button class="button_up">▲</button>
+              <input value="6" disabled />
+              <button class="button_down">▼</button>
+            </div>
+          </div>
+
+          <!-- 精神 -->
+          <div id="status_mnd" class="input_status">
+            <label>精神</label>
+            <div class="number_input">
+              <button class="button_up">▲</button>
+              <input value="6" disabled />
+              <button class="button_down">▼</button>
+            </div>
+          </div>
+        </div><!-- /area_status -->
+      </div><!-- /area -->
+
+    </div><!-- /flex -->
+
+    <div class="flex mt">
+      <!------------------------------------------------------>
+      <!-- ■ チェック・エリア -->
+      <!------------------------------------------------------>
+
+      <div class="area">
+        <h1>チェック</h1>
+
+        <table>
+          <!-- 見出し -->
+          <tr>
+            <th>ダイス1</th>
+            <th>ダイス2</th>
+            <th>修正1</th>
+            <th>
+              <input id="check_modify2" type="checkbox" checked onchange='checkCheck(this, "input_modify2")'>
+              <label for="check_modify2">修正2</label>
+            </th>
+            <th class="inequalitySign"></th>
+            <th>
+              <input id="check_target" type="checkbox" checked onchange='checkCheck(this, "input_target")'>
+              <label for="check_target">目標値</label>
+            </th>
+          </tr>
+
+          <!-- 入力欄 -->
+          <tr class="area_input">
+            <!-- ダイス1 -->
+            <td>
+              <div id="check_1" class="vert_button">
+                <button class="button_status button_vit" disabled>体力</button>
+                <button class="button_status button_agi">敏捷</button>
+                <button class="button_status button_int">知力</button>
+                <button class="button_status button_mnd">精神</button>
+                <button class="button_status button_blk invalid"></button>
+              </div>
+            </td>
+
+            <!-- ダイス2 -->
+            <td>
+              <div id="check_2" class="vert_button">
+                <button class="button_status button_vit" disabled>体力</button>
+                <button class="button_status button_agi">敏捷</button>
+                <button class="button_status button_int">知力</button>
+                <button class="button_status button_mnd">精神</button>
+                <button class="button_status button_blk">なし</button>
+              </div>
+            </td>
+
+            <!-- 修正1 -->
+            <td>
+              <div id="input_modify1" class="vert_button number_input">
+                  <button class="button_up">▲</button>
+                  <input type="number" value="0" onblur="numberCheckMinus(this)" />
+                  <button class="button_down">▼</button>
+              </div>
+            </td>
+
+            <!-- 修正2 -->
+            <td>
+              <div id="input_modify2" class="vert_button number_input">
+                  <button class="button_up">▲</button>
+                  <input type="number" value="0" onblur="numberCheckMinus(this)" />
+                  <button class="button_down">▼</button>
+              </div>
+            </td>
+
+            <!-- ≧ -->
+            <td class="inequalitySign">
+              ≧
+            </td>
+
+            <!-- 目標値 -->
+            <td>
+              <div id="input_target" class="vert_button number_input">
+                  <button class="button_up">▲</button>
+                  <input type="number" value="4" min="0" onblur="numberCheck(this)"/>
+                  <button class="button_down">▼</button>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div><!-- /area -->
+
+      <!------------------------------------------------------>
+      <!-- ■ プリセット・エリア -->
+      <!------------------------------------------------------>
+
+      <div class="area ml">
+        <h1>プリセット</h1>
+
+        <div>
+          <h2>命中チェック</h2>
+          <button onclick="presetHit(0)">短剣</button>
+          <button onclick="presetHit(1)">剣</button>
+          <button onclick="presetHit(2)">槍</button>
+          <button onclick="presetHit(3)">斧</button>
+          <button onclick="presetHit(4)">弓</button>
+          <button onclick="presetHit(5)">素手</button>
+          <button onclick="presetHit(6)">素手（代用武器）</button>
+        </div>
+
+        <div class="mt">
+          <h2>ダメージ・チェック</h2>
+          <button onclick="presetDamage(0)">短剣</button>
+          <button onclick="presetDamage(1)">剣</button>
+          <button onclick="presetDamage(2)">槍</button>
+          <button onclick="presetDamage(3)">斧</button>
+          <button onclick="presetDamage(4)">弓</button>
+          <button onclick="presetDamage(5)">素手</button>
+          <button onclick="presetDamage(6)">素手（代用武器）</button>
+        </div>
+      </div><!-- /area -->
+
+    </div><!-- /flex -->
+
+    <!------------------------------------------------------>
+    <!-- ■ 出力エリア -->
+    <!------------------------------------------------------>
+
+    <div class="area_output">
+      <button class="button_copy" onclick="onButtonCopy()">
+        コマンドをコピー
+      </button>
+      <div class="navi_text hidden">クリップボードにコピーしました。</div>
     </div>
 
-    <!-- 入力エリア -->
-    <div>
-      <input />
-    </div>
   </body>
 </html>

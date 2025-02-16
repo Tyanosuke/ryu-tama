@@ -104,6 +104,25 @@ function setCheckButton(targetId) {
     });
 }
 
+// プリセット：度歩きチェック
+function presetTravel(id) {
+    const buttons = document.querySelectorAll(".vert_button > button");
+    buttons.forEach(element => {
+        element.disabled = false;
+    });
+
+    const list = [
+        ["vit", "mnd"],
+        ["vit", "agi"],
+        ["int", "int"],
+        ["agi", "int"],
+    ]
+
+    document.querySelector("#check_1 .button_" + list[id][0]).disabled = true;
+    document.querySelector("#check_2 .button_" + list[id][1]).disabled = true;
+    document.querySelector("#input_modify1 input").value = 0;
+}
+
 // プリセット：命中チェック
 function presetHit(id) {
     const buttons = document.querySelectorAll(".vert_button > button");
@@ -268,5 +287,10 @@ function onButtonCopy() {
     naviText.classList.remove("hidden");
     window.setTimeout(function(){
         naviText.classList.add("hidden");
-    }, 5000);
+    }, 1000);
+}
+
+// プリセットボタン
+function onClickButtonPreset($this) {
+    document.querySelector(".sp_shift").classList.toggle("display");
 }

@@ -7,6 +7,7 @@
   --main-font-color: rgb(64, 32, 16);
   --main-bg-color: rgb(250, 240, 220);
   --strong-color: rgb(240, 180, 50);
+  --title-color: rgb(30, 130, 180);
 }
 
 body
@@ -16,10 +17,11 @@ body
   padding: 10px;
 }
 
-h1
+.title
 {
+  font-size: 20px;
   color: #fff;
-  background: rgb(30, 130, 180);
+  background: var(--title-color);
   border-radius: 10px;
   margin: 0 0 10px 0;
   padding: 5px 15px;
@@ -128,6 +130,7 @@ button.unChecked
 .area_status
 {
   display: flex;
+  flex-wrap: wrap;
 }
 
 /* 入力欄 */
@@ -186,7 +189,6 @@ th
 th
 {
   width: 80px;
-  padding: 0 10px;
   color: var(--main-bg-color);
   background-color: var(--main-font-color);
 }
@@ -280,6 +282,96 @@ td.inequalitySign.unChecked
   color: rgb(198, 255, 198) !important;
 }
 
+@media (max-width: 650px) {
+  .input_status > .number_input > input
+  {
+    font-size: 40px !important;
+  }
+
+  th
+  {
+    font-size: 12px;
+  }
+  td.inequalitySign
+  {
+    font-size: 20px;
+  }
+  .vert_button > input
+  {
+    font-size: 20px;
+  }
+
+  th > input[type="checkbox"] + label
+  {
+    display: block;
+  }
+
+  .vert_button button
+  {
+    height: 30px;
+  }
+
+  .button_status
+  {
+    font-size: 15px;
+  }
+
+  .button_copy
+  {
+    font-size: 20px !important;
+  }
+}
+
+/* -------------------------------------------------- */
+/* プリセット・エリア
+/* -------------------------------------------------- */
+
+/* メニューボタン */
+.button_preset
+{
+  color: var(--title-color);
+  background: #fff;
+  border-color: transparent;
+  margin-left: auto;
+  align-items: center;
+}
+
+/*  */
+.sp_only {
+  display: none;
+}
+
+@media (max-width: 930px) {
+  /*  */
+  .pc_only {
+    display: none;
+  }
+  .sp_only {
+    display: inherit;
+  }
+
+  /* プリセット・エリア */
+  .sp_shift {
+    display: none;
+    padding: 10px;
+    border: solid 1px var(--main-font-color);
+    margin-bottom: 10px;
+
+    background: var(--main-bg-color);
+    border-radius: 5px;
+    box-sizing: border-box;
+
+    z-index: 1;
+
+    max-height: 0;
+    overflow: hidden;
+  }
+  .sp_shift.display {
+    display: inherit;
+    max-height: 100% !important;
+  }
+}
+
 /* -------------------------------------------------- */
 /* 出力エリア
 /* -------------------------------------------------- */
@@ -291,8 +383,8 @@ td.inequalitySign.unChecked
 
 /* 「コマンドをコピー」ボタン */
 .button_copy {
-  font-size: 40px;
-  width: 400px;
+  font-size: 30px;
+  width: auto;
   margin-top: 10px;
 }
 

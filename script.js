@@ -22,16 +22,6 @@ window.onload = function() {
     setNumberButton("status_mnd", ".button_up", 2, 12, 2);
     setNumberButton("status_mnd", ".button_down", -2, 12, 2);
 
-    // 修正
-    setNumberButton("input_modify1", ".button_up", 1);
-    setNumberButton("input_modify1", ".button_down", -1);
-    setNumberButton("input_modify2", ".button_up", 1);
-    setNumberButton("input_modify2", ".button_down", -1);
-
-    // 目標値
-    setNumberButton("input_target", ".button_up", 1, null, 0);
-    setNumberButton("input_target", ".button_down", -1, null, 0);
-
     // --------------------------------------------------
     // チェック・ボタン
     // --------------------------------------------------

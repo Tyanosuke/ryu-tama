@@ -105,14 +105,6 @@ button.unChecked
   margin-bottom: 0 !important;
 }
 
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button
-{
-    -webkit-appearance: none;
-    margin: 0;
-    -moz-appearance: textfield;
-}
-
 .flex
 {
   display: flex;
@@ -217,6 +209,10 @@ th
   width: calc(100% - 10px);
   height: 50px;
   margin: 5px 0;
+}
+.vert_button input
+{
+  text-align: right;
 }
 .vert_button > button.button_status
 {

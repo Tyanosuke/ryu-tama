@@ -105,7 +105,7 @@ function setCheckButton(targetId) {
 }
 
 // プリセット適用
-function setPreset(dice1, dice2 = null, modify = 0) {
+function setPreset(presetName, dice1, dice2 = null, modify = 0) {
     const buttons = document.querySelectorAll(".vert_button > button");
     buttons.forEach(element => {
         element.disabled = false;
@@ -115,9 +115,20 @@ function setPreset(dice1, dice2 = null, modify = 0) {
 
     if (dice2 != null) {
         document.querySelector("#check_2 .button_" + dice2).disabled = true;
+    } else {
+        document.querySelector("#check_2 .button_blk").disabled = true;
     }
 
     document.querySelector("#input_modify1 input").value = modify;
+
+    // ナビテキスト
+    let text;
+    if (presetName == null) {
+        text = "リセットしました。"
+    } else {
+        text = "『" + presetName + "』を適用しました。";
+    }
+    setNaviText(text);
 }
 
 // チェックボックス切り替え
@@ -236,14 +247,35 @@ function onButtonCopy() {
     navigator.clipboard.writeText(text);
 
     // ナビテキスト
-    const naviText = document.querySelector(".navi_text");
-    naviText.classList.remove("hidden");
-    window.setTimeout(function(){
-        naviText.classList.add("hidden");
-    }, 1000);
+    setNaviText("クリップボードにチャットコマンドをコピーしました。");
 }
 
 // プリセットボタン
 function onClickButtonPreset($this) {
     document.querySelector(".area_preset").classList.toggle("display");
+}
+
+// リセットボタン
+function onButtonReset() {
+    setPreset(null, "vit", "vit", "0")
+
+    document.querySelector("#input_modify2 input").value = 0;
+
+    document.querySelector("#input_target input").value = 4;
+}
+
+// ナビテキストのセット
+function setNaviText(text, scroll = true) {
+    const naviText = document.querySelector(".navi_text");
+    naviText.textContent = text;
+    naviText.classList.remove("hidden");
+    window.setTimeout(function(){
+        naviText.classList.add("hidden");
+    }, 1000);
+
+    if (scroll) {
+        var element = document.documentElement;
+        var bottom = element.scrollHeight - element.clientHeight;
+        window.scroll(0, bottom);
+    }
 }

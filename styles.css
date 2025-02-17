@@ -26,6 +26,11 @@ body
   margin: 0 0 10px 0;
   padding: 5px 15px;
 }
+.title.flex
+{
+  padding-right: 5px;
+}
+
 h2
 {
   margin: 0;
@@ -375,25 +380,36 @@ img.check_icon
 /* 出力エリア
 /* -------------------------------------------------- */
 
-.area_output {
+.area_output
+{
   display: flex;
   flex-direction: column;
 }
 
 /* 「コマンドをコピー」ボタン */
-.button_copy {
+.button_copy
+{
   font-size: 30px;
   width: auto;
   margin-top: 10px;
 }
 
 /* 「クリップボードにコピーしました。」 */
-.navi_text {
+.navi_text
+{
   margin-top: 10px;
   transition: opacity 1.0s;
 }
 
 /* 非表示 */
-.hidden {
+.hidden
+{
   opacity: 0;
+}
+
+.area_reset
+{
+  display: flex;
+  justify-content: end;
+  margin-top: 10px;
 }

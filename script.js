@@ -211,10 +211,9 @@ function onButtonCopy() {
     let textMod1 = document.querySelector("#input_modify1 input").value;
     if (textMod1 != "") {
         if (textMod1 > 0) {
-            text += "+" + textMod1;
-        } else if (textMod1 < 0) {
-            text += "-" + textMod1;
+            text += "+";
         }
+        text += textMod1;
     }
 
     // 修正2
@@ -224,10 +223,9 @@ function onButtonCopy() {
     }
     if (textMod2 != "") {
         if (textMod2 > 0) {
-            text += "+" + textMod2;
-        } else if (textMod2 < 0) {
-            text += "-" + textMod2;
+            text += "+";
         }
+        text += textMod2;
     }
 
     // 目標値

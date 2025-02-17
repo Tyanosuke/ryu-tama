@@ -209,7 +209,10 @@ function onButtonCopy() {
 
     // 修正1
     let textMod1 = document.querySelector("#input_modify1 input").value;
-    if (textMod1 != "") {
+    if (
+        textMod1 != ""
+        && textMod1 != "0"
+    ) {
         if (textMod1 > 0) {
             text += "+";
         }
@@ -221,7 +224,10 @@ function onButtonCopy() {
     if (!document.querySelector("#input_modify2 input").classList.contains("unChecked")) {
         textMod2 += document.querySelector("#input_modify2 input").value;
     }
-    if (textMod2 != "") {
+    if (
+        textMod2 != ""
+        && textMod2 != "0"
+    ) {
         if (textMod2 > 0) {
             text += "+";
         }

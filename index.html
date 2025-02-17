@@ -73,46 +73,105 @@
       <div class="area">
         <div class="title flex">
           チェック
-          <button class="sp_only button_preset" onclick="onClickButtonPreset(this)">
+          <button class="button_preset" onclick="onClickButtonPreset(this)">
             プリセット
           </button>
         </div>
 
-        <div class="area sp_shift sp_only">
-          <div class="title">
-            プリセット
-          </div>
-
+        <!-- プリセット -->
+        <div class="area area_preset">
           <div>
             <h2>旅歩きチェック</h2>
-            <button onclick="presetTravel(0)">コンディション</button>
-            <button onclick="presetTravel(1)">移動</button>
-            <button onclick="presetTravel(2)">方向</button>
-            <button onclick="presetTravel(3)">野営</button>
+            <button onclick='setPreset("vit", "mnd")'>
+              <img class="check_icon" src="./img/icon/field/1_condition.png">
+              コンディション
+            </button>
+            <button onclick='setPreset("vit", "agi")'>
+              <img class="check_icon" src="./img/icon/field/2_move.png">
+              移動
+            </button>
+            <button onclick='setPreset("int", "int")'>
+              <img class="check_icon" src="./img/icon/field/3_direction.png">
+              方向
+            </button>
+            <button onclick='setPreset("agi", "int")'>
+              <img class="check_icon" src="./img/icon/field/4_camp.png">
+              野営
+            </button>
+          </div>
+
+          <div class="mt">
+            <h2>戦闘</h2>
+            <button onclick='setPreset("agi", "int")'>
+              <img class="check_icon" src="./img/icon/battle/0_initiative.png">
+              イニシアティブ
+            </button>
           </div>
 
           <div class="mt">
             <h2>命中チェック</h2>
-            <button onclick="presetHit(0)">短剣</button>
-            <button onclick="presetHit(1)">剣</button>
-            <button onclick="presetHit(2)">槍</button>
-            <button onclick="presetHit(3)">斧</button>
-            <button onclick="presetHit(4)">弓</button>
-            <button onclick="presetHit(5)">素手</button>
-            <button onclick="presetHit(6)">素手（代用武器）</button>
+            <button onclick='setPreset("agi", "int",  "1")'>
+              <img class="check_icon" src="./img/icon/battle/1_knife.png">
+              短剣
+            </button>
+            <button onclick='setPreset("vit", "agi",  "0")'>
+              <img class="check_icon" src="./img/icon/battle/2_sword.png">
+              剣
+            </button>
+            <button onclick='setPreset("vit", "agi",  "0")'>
+              <img class="check_icon" src="./img/icon/battle/3_spear.png">
+              槍
+            </button>
+            <button onclick='setPreset("vit", "vit", "-1")'>
+              <img class="check_icon" src="./img/icon/battle/4_axe.png">
+              斧
+            </button>
+            <button onclick='setPreset("agi", "int", "-2")'>
+              <img class="check_icon" src="./img/icon/battle/5_arrow.png">
+              弓
+            </button>
+            <button onclick='setPreset("vit", "agi",  "0")'>
+              <img class="check_icon" src="./img/icon/battle/6_grapple.png">
+              素手
+            </button>
+            <button onclick='setPreset("vit", "agi",  "0")'>
+              <img class="check_icon" src="./img/icon/battle/7_substitute.png">
+              素手（代用武器）
+            </button>
           </div>
 
           <div class="mt">
             <h2>ダメージ・チェック</h2>
-            <button onclick="presetDamage(0)">短剣</button>
-            <button onclick="presetDamage(1)">剣</button>
-            <button onclick="presetDamage(2)">槍</button>
-            <button onclick="presetDamage(3)">斧</button>
-            <button onclick="presetDamage(4)">弓</button>
-            <button onclick="presetDamage(5)">素手</button>
-            <button onclick="presetDamage(6)">素手（代用武器）</button>
+            <button onclick='setPreset("int", null,  "1")'>
+              <img class="check_icon" src="./img/icon/battle/1_knife.png">
+              短剣
+            </button>
+            <button onclick='setPreset("vit", null,  "0")'>
+              <img class="check_icon" src="./img/icon/battle/2_sword.png">
+              剣
+            </button>
+            <button onclick='setPreset("vit", null,  "1")'>
+              <img class="check_icon" src="./img/icon/battle/3_spear.png">
+              槍
+            </button>
+            <button onclick='setPreset("vit", null,  "0")'>
+              <img class="check_icon" src="./img/icon/battle/4_axe.png">
+              斧
+            </button>
+            <button onclick='setPreset("agi", null,  "0")'>
+              <img class="check_icon" src="./img/icon/battle/5_arrow.png">
+              弓
+            </button>
+            <button onclick='setPreset("vit", null, "-2")'>
+              <img class="check_icon" src="./img/icon/battle/6_grapple.png">
+              素手
+            </button>
+            <button onclick='setPreset("vit", null, "-1")'>
+              <img class="check_icon" src="./img/icon/battle/7_substitute.png">
+              素手（代用武器）
+            </button>
           </div>
-        </div>
+        </div><!-- /area_preset -->
 
         <table>
           <!-- 見出し -->
@@ -182,61 +241,15 @@
             </td>
           </tr>
         </table>
-      </div><!-- /area -->
 
-      <!------------------------------------------------------>
-      <!-- ■ プリセット・エリア -->
-      <!------------------------------------------------------>
-
-      <div class="area ml pc_only">
-        <div class="title">
-          プリセット
-        </div>
-
-        <div>
-          <h2>旅歩きチェック</h2>
-          <button onclick="presetTravel(0)">コンディション</button>
-          <button onclick="presetTravel(1)">移動</button>
-          <button onclick="presetTravel(2)">方向</button>
-          <button onclick="presetTravel(3)">野営</button>
-        </div>
-
-        <div class="mt">
-          <h2>命中チェック</h2>
-          <button onclick="presetHit(0)">短剣</button>
-          <button onclick="presetHit(1)">剣</button>
-          <button onclick="presetHit(2)">槍</button>
-          <button onclick="presetHit(3)">斧</button>
-          <button onclick="presetHit(4)">弓</button>
-          <button onclick="presetHit(5)">素手</button>
-          <button onclick="presetHit(6)">素手（代用武器）</button>
-        </div>
-
-        <div class="mt">
-          <h2>ダメージ・チェック</h2>
-          <button onclick="presetDamage(0)">短剣</button>
-          <button onclick="presetDamage(1)">剣</button>
-          <button onclick="presetDamage(2)">槍</button>
-          <button onclick="presetDamage(3)">斧</button>
-          <button onclick="presetDamage(4)">弓</button>
-          <button onclick="presetDamage(5)">素手</button>
-          <button onclick="presetDamage(6)">素手（代用武器）</button>
-        </div>
+        <div class="area_output">
+          <button class="button_copy" onclick="onButtonCopy()">
+            コマンドをコピー
+          </button>
+          <div class="navi_text hidden">クリップボードにコピーしました。</div>
         </div>
       </div><!-- /area -->
-
     </div><!-- /flex -->
-
-    <!------------------------------------------------------>
-    <!-- ■ 出力エリア -->
-    <!------------------------------------------------------>
-
-    <div class="area_output">
-      <button class="button_copy" onclick="onButtonCopy()">
-        コマンドをコピー
-      </button>
-      <div class="navi_text hidden">クリップボードにコピーしました。</div>
-    </div>
 
   </body>
 </html>

@@ -104,67 +104,20 @@ function setCheckButton(targetId) {
     });
 }
 
-// プリセット：度歩きチェック
-function presetTravel(id) {
+// プリセット適用
+function setPreset(dice1, dice2 = null, modify = 0) {
     const buttons = document.querySelectorAll(".vert_button > button");
     buttons.forEach(element => {
         element.disabled = false;
     });
 
-    const list = [
-        ["vit", "mnd"],
-        ["vit", "agi"],
-        ["int", "int"],
-        ["agi", "int"],
-    ]
+    document.querySelector("#check_1 .button_" + dice1).disabled = true;
 
-    document.querySelector("#check_1 .button_" + list[id][0]).disabled = true;
-    document.querySelector("#check_2 .button_" + list[id][1]).disabled = true;
-    document.querySelector("#input_modify1 input").value = 0;
-}
+    if (dice2 != null) {
+        document.querySelector("#check_2 .button_" + dice2).disabled = true;
+    }
 
-// プリセット：命中チェック
-function presetHit(id) {
-    const buttons = document.querySelectorAll(".vert_button > button");
-    buttons.forEach(element => {
-        element.disabled = false;
-    });
-
-    const list = [
-        ["agi", "int",  "1"],
-        ["vit", "agi",  "0"],
-        ["vit", "agi",  "0"],
-        ["vit", "vit", "-1"],
-        ["agi", "int", "-2"],
-        ["vit", "agi",  "0"],
-        ["vit", "agi",  "0"],
-    ]
-
-    document.querySelector("#check_1 .button_" + list[id][0]).disabled = true;
-    document.querySelector("#check_2 .button_" + list[id][1]).disabled = true;
-    document.querySelector("#input_modify1 input").value = list[id][2];
-}
-
-// プリセット：ダメージ・チェック
-function presetDamage(id) {
-    const buttons = document.querySelectorAll(".vert_button > button");
-    buttons.forEach(element => {
-        element.disabled = false;
-    });
-
-    const list = [
-        ["int",  "1"],
-        ["vit",  "0"],
-        ["vit",  "1"],
-        ["vit",  "0"],
-        ["agi",  "0"],
-        ["vit", "-2"],
-        ["vit", "-1"],
-    ]
-
-    document.querySelector("#check_1 .button_" + list[id][0]).disabled = true;
-    document.querySelector("#check_2 .button_blk").disabled = true;
-    document.querySelector("#input_modify1 input").value = list[id][1];
+    document.querySelector("#input_modify1 input").value = modify;
 }
 
 // チェックボックス切り替え
@@ -292,5 +245,5 @@ function onButtonCopy() {
 
 // プリセットボタン
 function onClickButtonPreset($this) {
-    document.querySelector(".sp_shift").classList.toggle("display");
+    document.querySelector(".area_preset").classList.toggle("display");
 }

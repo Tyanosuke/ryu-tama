@@ -29,6 +29,7 @@ body
 h2
 {
   margin: 0;
+  font-size: 15px;
 }
 
 input
@@ -336,40 +337,38 @@ td.inequalitySign.unChecked
   align-items: center;
 }
 
-/*  */
-.sp_only {
+/* プリセット・エリア */
+.area_preset {
   display: none;
+  padding: 10px;
+  border: solid 1px var(--main-font-color);
+  margin-bottom: 10px;
+
+  background: var(--main-bg-color);
+  border-radius: 5px;
+  box-sizing: border-box;
+
+  z-index: 1;
+
+  max-height: 0;
+  overflow: hidden;
+}
+.area_preset.display {
+  display: inherit;
+  max-height: 100% !important;
 }
 
-@media (max-width: 930px) {
-  /*  */
-  .pc_only {
-    display: none;
-  }
-  .sp_only {
-    display: inherit;
-  }
+.area_preset button {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px;
+}
 
-  /* プリセット・エリア */
-  .sp_shift {
-    display: none;
-    padding: 10px;
-    border: solid 1px var(--main-font-color);
-    margin-bottom: 10px;
-
-    background: var(--main-bg-color);
-    border-radius: 5px;
-    box-sizing: border-box;
-
-    z-index: 1;
-
-    max-height: 0;
-    overflow: hidden;
-  }
-  .sp_shift.display {
-    display: inherit;
-    max-height: 100% !important;
-  }
+img.check_icon
+{
+  width: 20px;
+  height: auto;
+  padding-right: 10px;
 }
 
 /* -------------------------------------------------- */
